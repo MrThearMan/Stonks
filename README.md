@@ -1,7 +1,7 @@
 # Stonks
 
 Simple stock analysis site.
-1. Clone repository, open shell and cd to project folder
+1. Clone repository and open shell at project folder
 2. Create virtual environment (python -m venv venv)
 3. Activate virtual environment (venv\scripts\activate)
 4. Run server (python manage.py runserver)
