@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-20 17:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\forms.py:13
+msgid "Stock"
+msgstr "Osake"
+
+#: .\forms.py:23
+msgid "Start Date"
+msgstr "Aloituspäivä"
+
+#: .\forms.py:31
+msgid "End Date (optional)"
+msgstr "Päättymispäivä (valinnainen)"
+
+#: .\templates\analyzer\base.html:30 .\templates\analyzer\index.html:13
+msgid "Home"
+msgstr "Koti"
+
+#: .\templates\analyzer\index.html:19
+msgid "STOCK ANALYZER"
+msgstr "OSAKKEIDEN ANALYSOINTI"
+
+#: .\templates\analyzer\index.html:31
+msgid "Click or drop file here calculate from CSV"
+msgstr "Klikkaa tai pudota tiedosto tänne"
+
+#: .\templates\analyzer\index.html:39
+msgid "Longest bullish streak"
+msgstr "Pisin nouseva putki"
+
+#: .\templates\analyzer\index.html:40
+msgid "days"
+msgstr "päivää"
+
+#: .\templates\analyzer\index.html:44
+msgid "Stock History by Volume and Price Change"
+msgstr "Osakehistoria myytyjen osakkeiden ja hinnan muutoksen mukaan"
+
+#: .\templates\analyzer\index.html:55
+msgid "Best Opening Price Compared to Five Day SMA"
+msgstr "Paras aloitushinta verrattuna viiden päivän SMA:han"
+
+#: .\templates\analyzer\index.html:83
+msgid "Only one file at a time"
+msgstr "Vain yksi tiedosto kerrallaan"
+
+#: .\templates\analyzer\index.html:88
+msgid "Filetype must be .csv"
+msgstr "Tiedostotyypin tulee olla .csv"
+
+#: .\templates\analyzer\index.html:116
+msgid "No results found."
+msgstr "Hakutulosta ei löytynyt."
+
+#: .\utils.py:78
+#, python-brace-format
+msgid "REQUEST FOR STOCK '{stock}' FAILED."
+msgstr "SIVUPYYNTO OSAKKEELLE '{stock}' EPÄONNISTUI."
+
+#: .\utils.py:82
+#, fuzzy, python-brace-format
+#| msgid "No stock data. Check that given stock symbol '{stock}' is correct."
+msgid "No stock data for stock '{stock}'."
+msgstr "Ei osakedataa. Tarkista että osakkeen symbooli {stock} on oikein."
+
+#: .\utils.py:245 .\utils.py:256
+msgid "Date"
+msgstr "Päivä"
+
+#: .\utils.py:246
+msgid "Volume"
+msgstr "Osakemäärä"
+
+#: .\utils.py:247
+msgid "Price Change ($)"
+msgstr "Hinnan muutos ($)"
+
+#: .\utils.py:257
+msgid "Price Change (%)"
+msgstr "Hinnan muutos (%)"
+
+#: .\views.py:40
+#, python-brace-format
+msgid "{error_con}"
+msgstr "{error_con}"
+
+#: .\views.py:41
+#, python-brace-format
+msgid "Error: Request failed: {error_con}."
+msgstr "Virhe: Sivu ei vastaa: {error_con}."
+
+#: .\views.py:44
+#, python-brace-format
+msgid "During API search: {error_val}. Search failed."
+msgstr "API haku virhe: {error_val}. Haku ei onnistunut."
+
+#: .\views.py:45
+#, python-brace-format
+msgid "Error: {error_val}"
+msgstr "Virhe: {error_val}"
+
+#: .\views.py:56
+#, python-brace-format
+msgid "During csv import: Key {error_key} not found. Import halted."
+msgstr "CSV-luku virhe: Avainta {error_key} ei löytynyt. Luku ei onnistunut."
+
+#: .\views.py:57
+#, python-brace-format
+msgid "Error: Key {error_key} not found in CSV."
+msgstr "Virhe: Avainta {error_key} ei löytynyt taulukosta."
+
+#: .\views.py:60
+#, python-brace-format
+msgid "During csv import: {error_val}. Import halted."
+msgstr "CSV-luku virhe: {error_val}. Luku ei onnistunut."
+
+#: .\views.py:61
+#, python-brace-format
+msgid "Error: {error_val} in CSV."
+msgstr "Virhe: {error_val} taulukossa."

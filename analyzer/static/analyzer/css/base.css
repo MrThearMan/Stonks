@@ -1,0 +1,57 @@
+.container-block {
+    display: block;
+    position: relative;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.container-block .content {
+    position: relative;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 700px;
+}
+
+.center {
+    position: relative;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: auto;
+}
+
+.center:first-child {
+    text-align: center;
+}
+
+.dashed {
+    padding: 0;
+    margin: 0;
+    list-style-position: inside;
+    list-style-type: '\2013\00A0 ';
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-center {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.btn:focus {
+    box-shadow: none!important;
+}

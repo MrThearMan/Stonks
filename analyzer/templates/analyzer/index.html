@@ -1,0 +1,128 @@
+{% extends "analyzer/base.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block favicon %}{% static "analyzer/favicons/stonks.ico" %}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "analyzer/css/index.css" %}">
+{% endblock %}
+
+{% block title %}{% translate "Home" %}{% endblock %}
+
+{% block content %}
+    <section class="container-block">
+
+        <a href="{% url 'analyzer:index' %}" class="text-decoration-none text-dark" onclick="document.location.search = ''">
+            <h2 class="text-center mt-5">{% translate "STOCK ANALYZER" %}</h2>
+        </a>
+
+        <div class="content">
+            {% crispy form %}
+        </div>
+
+        <div class="content">
+            <form method="POST" action="{% url "analyzer:index" %}" class="dropzone" id="csv-upload" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input name="file" type="file">
+                <div class="dz-message">
+                    <p>{% translate "Click or drop file here calculate from CSV" %}</p>
+                </div>
+            </form>
+        </div>
+
+        <div class="content">
+
+            {% if longest_bullish is not None %}
+                <h4 class="text-center my-4">{% translate "Longest bullish streak" %}:</h4>
+                <h5 class="text-center">{{ longest_bullish }} {% translate "days" %}</h5>
+            {% endif %}
+
+            {% if history_by_volume is not None %}
+                <h4 class="text-center my-4">{% translate "Stock History by Volume and Price Change" %}:</h4>
+                <div class="expandable-table" id="history_by_volume">
+                    {{ history_by_volume|safe }}
+                    {% if history_by_volume_rows > 10 %}
+                        <div class="fader"></div>
+                        <button data-toggle="expand-table" data-target="#history_by_volume" class="btn-expand icon-button fas fa-arrow-circle-down"></button>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if best_opening_price is not None %}
+                <h4 class="text-center my-4">{% translate "Best Opening Price Compared to Five Day SMA" %}:</h4>
+                <div class="expandable-table" id="best_opening_price">
+                    {{ best_opening_price|safe }}
+                    {% if best_opening_price_rows > 10 %}
+                        <div class="fader"></div>
+                        <button data-toggle="expand-table" data-target="#best_opening_price" class="btn-expand icon-button fas fa-arrow-circle-down"></button>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+    <script src="{% static "analyzer/js/index.js" %}"></script>
+    <script type="text/javascript">
+
+        {% if error is not None %}
+            alert_box.innerHTML = "{{ error }}"
+            setTimeout(() => { alert_box.remove() }, 3000)
+            document.querySelector(".dropzone").appendChild(alert_box)
+        {% endif %}
+
+        let submit_csv = function (added_files) {
+            if (added_files.length !== 1) {
+                alert_box.innerHTML = "{% translate "Only one file at a time" %}"
+                setTimeout(() => { alert_box.remove() }, 3000)
+                document.querySelector(".dropzone").appendChild(alert_box)
+
+            } else if (added_files[0].name.slice(-3) !== "csv") {
+                alert_box.innerHTML = "{% translate "Filetype must be .csv" %}"
+                setTimeout(() => { alert_box.remove() }, 3000)
+                document.querySelector(".dropzone").appendChild(alert_box)
+
+            } else {
+                document.querySelector(".dz-message").innerHTML = '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>'
+                document.querySelector(".dropzone input[type='file']").files = added_files
+                document.querySelector("#csv-upload").submit()
+            }
+        }
+
+        document.querySelector(".dropzone input[type='file']").onchange = function (e) {
+            e.preventDefault()
+            let added_files = this.files
+            submit_csv(added_files)
+        }
+
+        document.querySelector("#csv-upload").ondrop = function (e) {
+            e.preventDefault()
+            this.className = "dropzone"
+            let added_files = e.dataTransfer.files
+            submit_csv(added_files)
+        }
+
+        $("#id_stock").autoComplete({
+            resolver: 'custom',
+            minLength: 2,
+            preventEnter: true,
+            noResultsText: '{% translate "No results found." %}',
+            events: {
+                search: function (q, callback) {
+                    fetch("{% url "analyzer:filter_stocks" %}" + "?" + new URLSearchParams({"q": q}))
+                        .then(responce => responce.json()).then(function (result) {
+                            callback(result)
+                        });
+                }
+            }
+        })
+
+    </script>
+{% endblock %}
