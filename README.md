@@ -1,4 +1,4 @@
-# Stonks
+# STONKS
 
 Simple stock analysis site.
 1. Clone repository and open shell at project folder
