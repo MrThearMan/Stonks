@@ -79,7 +79,7 @@ def filter_stocks(request):
     :return: HTTP response.
     """
 
-    q: str = request.GET.get("q").upper()
+    q = request.GET.get("q").upper()
 
     with open("analyzer/static/analyzer/json/stocks.json", "r") as f:
         data = json.load(f)
