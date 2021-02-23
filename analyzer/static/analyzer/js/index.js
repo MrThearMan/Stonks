@@ -14,6 +14,7 @@ alert_box.style.transform = "translateX(-50%)"
 
 document.getElementById("id_1year").onclick = function () {
     let d = new Date()
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     d.setFullYear(d.getFullYear() - 1);
     d = d.toISOString().slice(0, 10)
 
@@ -22,6 +23,7 @@ document.getElementById("id_1year").onclick = function () {
 
 document.getElementById("id_1month").onclick = function () {
     let d = new Date()
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     d.setMonth(d.getMonth() - 1);
     d = d.toISOString().slice(0, 10)
 
@@ -30,6 +32,7 @@ document.getElementById("id_1month").onclick = function () {
 
 document.getElementById("id_6month").onclick = function () {
     let d = new Date()
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     d.setMonth(d.getMonth() - 6);
     d = d.toISOString().slice(0, 10)
 
@@ -38,6 +41,7 @@ document.getElementById("id_6month").onclick = function () {
 
 document.getElementById("id_5day").onclick = function () {
     let d = new Date()
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     d.setDate(d.getDate() - 5);
     d = d.toISOString().slice(0, 10)
 
@@ -46,6 +50,7 @@ document.getElementById("id_5day").onclick = function () {
 
 document.getElementById("id_ytd").onclick = function () {
     let d = new Date()
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     d.setMonth(0);  // january is 0
     d.setDate(1);
     d = d.toISOString().slice(0, 10)
