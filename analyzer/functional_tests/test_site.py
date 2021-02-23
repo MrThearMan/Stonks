@@ -25,23 +25,20 @@ def setMonth_js(date, month):
 
     new_day = date.day
 
-    # in Javascript: 0 = January, 11 = December. -1 = last year December, 12 = next year January, etc.
-    month -= 1
+    if month < 1:
+        years_back = math.ceil(-month / 11)
+        date = date.replace(year=date.year - years_back)
 
-    if month < 0:
-        years_back = -1 - math.floor(-month / 11)
-        date = date.replace(year=date.year + years_back)
+        month = 12 - (-month % 12)
 
-        month = (11 + 1) - (-month % 11)
-
-    if month > 11:
-        years_forward = math.floor(month / 11)
+    if month > 12:
+        years_forward = math.floor(month / 12)
         date = date.replace(year=date.year + years_forward)
 
-        month = (month % 11) - 1
+        month = month % 12
 
     date = date.replace(day=1)
-    date = date.replace(month=month + 1)  # + 1 because January is 0 in JavaScript and 1 in Python
+    date = date.replace(month=month)
     date += datetime.timedelta(days=new_day - 1)
 
     return date
