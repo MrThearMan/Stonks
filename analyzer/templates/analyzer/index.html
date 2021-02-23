@@ -37,7 +37,7 @@
 
             {% if longest_bullish is not None %}
                 <h4 class="text-center my-4">{% translate "Longest bullish streak" %}:</h4>
-                <h5 class="text-center">{{ longest_bullish }} {% translate "days" %}</h5>
+                <h5 class="text-center" id="longest_bullish">{{ longest_bullish }} {% translate "days" %}</h5>
             {% endif %}
 
             {% if history_by_volume is not None %}
