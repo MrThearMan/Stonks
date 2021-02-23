@@ -10,6 +10,8 @@ from django.http import JsonResponse
 from . import forms as analyzer_forms
 from . import utils
 
+from django import views as django_views
+
 
 def index(request):
     """Front page view.
