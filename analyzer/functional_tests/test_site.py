@@ -73,7 +73,6 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
 
         # ~~ User should be on the front page
 
-        stock = "AAPL"
         end_date = datetime.date.today()
 
         start_dates = [
@@ -86,11 +85,7 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
 
         button_ids = ["id_5day", "id_1month", "id_6month", "id_1year", "id_ytd"]
 
-        stock_field = self.browser.find_element_by_name("stock")
         start_date_field = self.browser.find_element_by_name("start_date")
-
-        # Set data for fields and search
-        stock_field.send_keys(stock)
 
         # ~~ User pressess the buttons in order
 
@@ -111,7 +106,7 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
         stock = "AAPL"
         start_date = datetime.date.today() - datetime.timedelta(days=60)
 
-        stock_field = self.browser.find_element_by_name("stock")
+        stock_field = self.browser.find_element_by_name("stock_symbol")
         submit_button = self.browser.find_element_by_css_selector("button[type='submit']")
 
         # Set data for fields and search
@@ -123,23 +118,23 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
         # ~~ Searches for Apple stock for the last 30 days
 
         try:
-            self.browser.find_element_by_id("longest_bullish")
+            self.browser.find_element_by_id("id_longest_bullish")
         except NoSuchElementException:
             self.fail("Longest Bullish -value was not found!")
 
         try:
-            self.browser.find_element_by_id("history_by_volume")
+            self.browser.find_element_by_id("id_history_by_volume")
         except NoSuchElementException:
             self.fail("History by Volume -table was not found!")
 
         try:
-            self.browser.find_element_by_id("best_opening_price")
+            self.browser.find_element_by_id("id_best_opening_price")
         except NoSuchElementException:
             self.fail("Best Opening Price -table was not found!")
 
         self.assertURLEqual(
             self.browser.current_url,
-            self.live_server_url + f"/?stock={stock}&start_date={start_date}&end_date="
+            self.live_server_url + f"/?stock_symbol={stock}&start_date={start_date}&end_date="
         )
 
     def test_search_start_date_to_end_date(self):
@@ -151,7 +146,7 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
         end_date = datetime.date.today() - datetime.timedelta(days=20)
         start_date = end_date - datetime.timedelta(days=60)
 
-        stock_field = self.browser.find_element_by_name("stock")
+        stock_field = self.browser.find_element_by_name("stock_symbol")
         submit_button = self.browser.find_element_by_css_selector("button[type='submit']")
 
         # Set data for fields and search
@@ -164,23 +159,23 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
         # ~~ Searches for Apple stock for the last 30 days
 
         try:
-            self.browser.find_element_by_id("longest_bullish")
+            self.browser.find_element_by_id("id_longest_bullish")
         except NoSuchElementException:
             self.fail("Longest Bullish -value was not found!")
 
         try:
-            self.browser.find_element_by_id("history_by_volume")
+            self.browser.find_element_by_id("id_history_by_volume")
         except NoSuchElementException:
             self.fail("History by Volume -table was not found!")
 
         try:
-            self.browser.find_element_by_id("best_opening_price")
+            self.browser.find_element_by_id("id_best_opening_price")
         except NoSuchElementException:
             self.fail("Best Opening Price -table was not found!")
 
         self.assertURLEqual(
             self.browser.current_url,
-            self.live_server_url + f"/?stock={stock}&start_date={start_date}&end_date={end_date}"
+            self.live_server_url + f"/?stock_symbol={stock}&start_date={start_date}&end_date={end_date}"
         )
 
     def test_analyze_from_csv(self):
@@ -198,17 +193,17 @@ class TestSiteFunctionality(StaticLiveServerTestCase_Chrome):
         # ~~ CSV uploaded, page will reload
 
         try:
-            self.browser.find_element_by_id("longest_bullish")
+            self.browser.find_element_by_id("id_longest_bullish")
         except NoSuchElementException:
             self.fail("Longest Bullish -value was not found!")
 
         try:
-            self.browser.find_element_by_id("history_by_volume")
+            self.browser.find_element_by_id("id_history_by_volume")
         except NoSuchElementException:
             self.fail("History by Volume -table was not found!")
 
         try:
-            self.browser.find_element_by_id("best_opening_price")
+            self.browser.find_element_by_id("id_best_opening_price")
         except NoSuchElementException:
             self.fail("Best Opening Price -table was not found!")
 

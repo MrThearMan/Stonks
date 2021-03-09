@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-20 17:31+0200\n"
+"POT-Creation-Date: 2021-03-09 20:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,108 +30,83 @@ msgstr ""
 msgid "End Date (optional)"
 msgstr ""
 
-#: .\templates\analyzer\base.html:30 .\templates\analyzer\index.html:13
+#: .\templates\analyzer\base.html:30 .\templates\analyzer\index.html:14
 msgid "Home"
 msgstr ""
 
-#: .\templates\analyzer\index.html:19
+#: .\templates\analyzer\index.html:20
 msgid "STOCK ANALYZER"
 msgstr ""
 
-#: .\templates\analyzer\index.html:31
+#: .\templates\analyzer\index.html:32
 msgid "Click or drop file here calculate from CSV"
 msgstr ""
 
-#: .\templates\analyzer\index.html:39
+#: .\templates\analyzer\index.html:40
 msgid "Longest bullish streak"
 msgstr ""
 
-#: .\templates\analyzer\index.html:40
-msgid "days"
-msgstr ""
-
-#: .\templates\analyzer\index.html:44
+#: .\templates\analyzer\index.html:41
 msgid "Stock History by Volume and Price Change"
 msgstr ""
 
-#: .\templates\analyzer\index.html:55
+#: .\templates\analyzer\index.html:42
 msgid "Best Opening Price Compared to Five Day SMA"
 msgstr ""
 
-#: .\templates\analyzer\index.html:83
+#: .\templates\analyzer\index.html:45
+msgid "days"
+msgstr ""
+
+#: .\templates\analyzer\index.html:69
 msgid "Only one file at a time"
 msgstr ""
 
-#: .\templates\analyzer\index.html:88
+#: .\templates\analyzer\index.html:74
 msgid "Filetype must be .csv"
 msgstr ""
 
-#: .\templates\analyzer\index.html:116
+#: .\templates\analyzer\index.html:102
 msgid "No results found."
 msgstr ""
 
-#: .\utils.py:78
+#: .\utils.py:44
 #, python-brace-format
-msgid "REQUEST FOR STOCK '{stock}' FAILED."
+msgid "Formatting failed: A value for a column was not what expected. {error}."
 msgstr ""
 
-#: .\utils.py:82
+#: .\utils.py:50
 #, python-brace-format
-msgid "No stock data for stock '{stock}'."
+msgid "Formatting failed: A column with key {key} was not found."
 msgstr ""
 
-#: .\utils.py:245 .\utils.py:256
-msgid "Date"
+#: .\utils.py:74
+#, python-brace-format
+msgid "Nasdaq API did not respond. {e}."
 msgstr ""
 
-#: .\utils.py:246
+#: .\utils.py:77
+#, python-brace-format
+msgid "No stock data for stock '{stock_symbol}'."
+msgstr ""
+
+#: .\utils.py:95
+#, python-brace-format
+msgid "File '{file}' not found."
+msgstr ""
+
+#: .\utils.py:152
 msgid "Volume"
 msgstr ""
 
-#: .\utils.py:247
-msgid "Price Change ($)"
+#: .\utils.py:153 .\utils.py:183
+msgid "Date"
 msgstr ""
 
-#: .\utils.py:257
+#: .\utils.py:154
 msgid "Price Change (%)"
 msgstr ""
 
-#: .\views.py:40
-#, python-brace-format
-msgid "{error_con}"
-msgstr ""
-
-#: .\views.py:41
-#, python-brace-format
-msgid "Error: Request failed: {error_con}."
-msgstr ""
-
-#: .\views.py:44
-#, python-brace-format
-msgid "During API search: {error_val}. Search failed."
-msgstr ""
-
-#: .\views.py:45
-#, python-brace-format
-msgid "Error: {error_val}"
-msgstr ""
-
-#: .\views.py:56
-#, python-brace-format
-msgid "During csv import: Key {error_key} not found. Import halted."
-msgstr ""
-
-#: .\views.py:57
-#, python-brace-format
-msgid "Error: Key {error_key} not found in CSV."
-msgstr ""
-
-#: .\views.py:60
-#, python-brace-format
-msgid "During csv import: {error_val}. Import halted."
-msgstr ""
-
-#: .\views.py:61
-#, python-brace-format
-msgid "Error: {error_val} in CSV."
+#: .\utils.py:184
+msgid "Price Change ($)"
 msgstr ""

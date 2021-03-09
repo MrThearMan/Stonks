@@ -9,7 +9,7 @@ from crispy_forms.layout import Layout, Div, HTML
 class SearchForm(forms.Form):
     """Form to search for stock data."""
 
-    stock = forms.CharField(
+    stock_symbol = forms.CharField(
         label=_("Stock"),
         widget=forms.TextInput(
             attrs={
@@ -41,7 +41,7 @@ class SearchForm(forms.Form):
     helper.layout = Layout(
         Div(
             Div(
-                "stock",
+                "stock_symbol",
                 css_class="col-sm"
             ),
             css_class="row"
